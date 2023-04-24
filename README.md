@@ -1,3 +1,5 @@
+Cloned from https://huggingface.co/spaces/cvlab/zero123-live/tree/main
+
 ---
 title: Zero-1-to-3 Live Demo
 emoji: 🐠
