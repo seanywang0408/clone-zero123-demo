@@ -32,6 +32,7 @@ from transformers import AutoFeatureExtractor
 from torch import autocast
 from torchvision import transforms
 
+os.system('wget https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
 
 _SHOW_DESC = True
 _SHOW_INTERMEDIATE = False
