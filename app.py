@@ -32,7 +32,7 @@ from transformers import AutoFeatureExtractor
 from torch import autocast
 from torchvision import transforms
 
-os.system('wget -c https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
+os.system('wget -cP /home/xlab-app-center/clone-zero123-demo/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
 
 _SHOW_DESC = True
 _SHOW_INTERMEDIATE = False
