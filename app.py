@@ -34,8 +34,8 @@ from torchvision import transforms
 from urllib.request import urlopen
 from io import BytesIO
 
-# os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
-
+os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
+print('ckpt exist?', os.path.isfile('./105000.ckpt'))
 _SHOW_DESC = True
 _SHOW_INTERMEDIATE = False
 # _SHOW_INTERMEDIATE = True
@@ -56,11 +56,11 @@ _ARTICLE = 'See uses.md'
 
 
 def load_model_from_config(config, ckpt, device, verbose=False):
-    # print(f'Loading model from {ckpt}')
-    # pl_sd = torch.load(ckpt, map_location='cpu')
-    filepath = 'https://cv.cs.columbia.edu/zero123/assets/105000.ckpt'
-    with BytesIO(urlopen(filepath).read()) as f: 
-        pl_sd = torch.load(f, map_location='cpu') 
+    print(f'Loading model from {ckpt}')
+    pl_sd = torch.load(ckpt, map_location='cpu')
+    # filepath = 'https://cv.cs.columbia.edu/zero123/assets/105000.ckpt'
+    # with BytesIO(urlopen(filepath).read()) as f: 
+    #     pl_sd = torch.load(f, map_location='cpu') 
     if 'global_step' in pl_sd:
         print(f'Global Step: {pl_sd["global_step"]}')
     sd = pl_sd['state_dict']
