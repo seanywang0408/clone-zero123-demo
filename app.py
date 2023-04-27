@@ -34,8 +34,7 @@ from torchvision import transforms
 from urllib.request import urlopen
 from io import BytesIO
 
-os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
-print('ckpt exist?', os.path.isfile('./105000.ckpt'))
+
 _SHOW_DESC = True
 _SHOW_INTERMEDIATE = False
 # _SHOW_INTERMEDIATE = True
@@ -479,7 +478,8 @@ def run_demo(
         device_idx=_GPU_INDEX,
         ckpt='105000.ckpt',
         config='configs/sd-objaverse-finetune-c_concat-256.yaml'):
-
+    os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
+    print('ckpt exist?', os.path.isfile('./105000.ckpt'))
     print('sys.argv:', sys.argv)
     if len(sys.argv) > 1:
         print('old device_idx:', device_idx)
