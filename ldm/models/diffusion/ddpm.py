@@ -497,16 +497,23 @@ class LatentDiffusion(DDPM):
                  *args, **kwargs):
         print('begin latentdiffusion init')
         self.num_timesteps_cond = default(num_timesteps_cond, 1)
+        print('latentdiffusion init step0')
         self.scale_by_std = scale_by_std
+        print('latentdiffusion init step01')
         assert self.num_timesteps_cond <= kwargs['timesteps']
+        print('latentdiffusion init step02')
         # for backwards compatibility after implementation of DiffusionWrapper
         if conditioning_key is None:
             conditioning_key = 'concat' if concat_mode else 'crossattn'
         if cond_stage_config == '__is_unconditional__':
             conditioning_key = None
+        print('latentdiffusion init step03')
         ckpt_path = kwargs.pop("ckpt_path", None)
+        print('latentdiffusion init step04')
         ignore_keys = kwargs.pop("ignore_keys", [])
+        print('latentdiffusion init step05')
         super().__init__(conditioning_key=conditioning_key, *args, **kwargs)
+        print('latentdiffusion init step06')
         self.concat_mode = concat_mode
         self.cond_stage_trainable = cond_stage_trainable
         self.unet_trainable = unet_trainable
