@@ -495,6 +495,7 @@ class LatentDiffusion(DDPM):
                  scale_by_std=False,
                  unet_trainable=True,
                  *args, **kwargs):
+        print('begin latentdiffusion init')
         self.num_timesteps_cond = default(num_timesteps_cond, 1)
         self.scale_by_std = scale_by_std
         assert self.num_timesteps_cond <= kwargs['timesteps']
@@ -510,6 +511,7 @@ class LatentDiffusion(DDPM):
         self.cond_stage_trainable = cond_stage_trainable
         self.unet_trainable = unet_trainable
         self.cond_stage_key = cond_stage_key
+        print('latentdiffusion init step1')
         try:
             self.num_downs = len(first_stage_config.params.ddconfig.ch_mult) - 1
         except:
@@ -521,7 +523,7 @@ class LatentDiffusion(DDPM):
         self.instantiate_first_stage(first_stage_config)
         self.instantiate_cond_stage(cond_stage_config)
         self.cond_stage_forward = cond_stage_forward
-
+        print('latentdiffusion init step2')
         # construct linear projection layer for concatenating image CLIP embedding and RT
         self.cc_projection = nn.Linear(772, 768)
         nn.init.eye_(list(self.cc_projection.parameters())[0][:768, :768])
@@ -535,6 +537,7 @@ class LatentDiffusion(DDPM):
         if ckpt_path is not None:
             self.init_from_ckpt(ckpt_path, ignore_keys)
             self.restarted_from_ckpt = True
+        print('latentdiffusion init finished')
 
     def make_cond_schedule(self, ):
         self.cond_ids = torch.full(size=(self.num_timesteps,), fill_value=self.num_timesteps - 1, dtype=torch.long)
