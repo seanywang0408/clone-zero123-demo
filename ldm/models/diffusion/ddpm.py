@@ -88,9 +88,11 @@ class DDPM(pl.LightningModule):
         self.image_size = image_size  # try conv?
         self.channels = channels
         self.use_positional_encodings = use_positional_encodings
+        print('DDPM init step0')
         self.model = DiffusionWrapper(unet_config, conditioning_key)
         count_params(self.model, verbose=True)
         self.use_ema = use_ema
+        print('DDPM init step1')
         if self.use_ema:
             self.model_ema = LitEma(self.model)
             print(f"Keeping EMAs of {len(list(self.model_ema.buffers()))}.")
@@ -106,23 +108,25 @@ class DDPM(pl.LightningModule):
         if monitor is not None:
             self.monitor = monitor
         self.make_it_fit = make_it_fit
+        print('DDPM init step2')
         if ckpt_path is not None:
             self.init_from_ckpt(ckpt_path, ignore_keys=ignore_keys, only_model=load_only_unet)
-
+        print('DDPM init step3')
         self.register_schedule(given_betas=given_betas, beta_schedule=beta_schedule, timesteps=timesteps,
                                linear_start=linear_start, linear_end=linear_end, cosine_s=cosine_s)
-
+        print('DDPM init step4')
         self.loss_type = loss_type
 
         self.learn_logvar = learn_logvar
         self.logvar = torch.full(fill_value=logvar_init, size=(self.num_timesteps,))
         if self.learn_logvar:
             self.logvar = nn.Parameter(self.logvar, requires_grad=True)
-
+        print('DDPM init step5')
         self.ucg_training = ucg_training or dict()
         if self.ucg_training:
             self.ucg_prng = np.random.RandomState()
-
+        print('DDPM init step6')
+        
     def register_schedule(self, given_betas=None, beta_schedule="linear", timesteps=1000,
                           linear_start=1e-4, linear_end=2e-2, cosine_s=8e-3):
         if exists(given_betas):
