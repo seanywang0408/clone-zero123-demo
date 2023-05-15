@@ -126,7 +126,7 @@ class DDPM(pl.LightningModule):
         if self.ucg_training:
             self.ucg_prng = np.random.RandomState()
         print('DDPM init step6')
-        
+
     def register_schedule(self, given_betas=None, beta_schedule="linear", timesteps=1000,
                           linear_start=1e-4, linear_end=2e-2, cosine_s=8e-3):
         if exists(given_betas):
@@ -1455,7 +1455,9 @@ class LatentDiffusion(DDPM):
 class DiffusionWrapper(pl.LightningModule):
     def __init__(self, diff_model_config, conditioning_key):
         super().__init__()
+        print('DiffusionWrapper init0')
         self.diffusion_model = instantiate_from_config(diff_model_config)
+        print('DiffusionWrapper init1')
         self.conditioning_key = conditioning_key
         assert self.conditioning_key in [None, 'concat', 'crossattn', 'hybrid', 'adm', 'hybrid-adm']
 
