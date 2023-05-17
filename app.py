@@ -481,8 +481,16 @@ def run_demo(
     # print(os.listdir('/home/xlab-app-center/ '))
     print(os.listdir('/home/xlab-app-center/.cache/torch/hub/checkpoints/'))
     print('ckpt exist before download?', os.path.isfile('/home/xlab-app-center/105000.ckpt'))
-    os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
-    print('ckpt exist?', os.path.isfile('./105000.ckpt'))
+    if not os.path.isfile('/home/xlab-app-center/105000.ckpt'):
+        os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
+        print('ckpt exist?', os.path.isfile('./105000.ckpt'))
+
+    # print(os.listdir('/home/xlab-app-center/.cache/torch/hub/checkpoints/'))
+    print('clip ckpt exist before download?', os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'))
+    if not os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'):
+        os.system('wget -cP /home/xlab-app-center/ https://openaipublic.azureedge.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt')
+        print('clip ckpt exist?', os.path.isfile('./ViT-L-14.pt'))
+
 
     print('sys.argv:', sys.argv)
     if len(sys.argv) > 1:

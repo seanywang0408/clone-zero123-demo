@@ -353,7 +353,8 @@ class FrozenCLIPImageEmbedder(AbstractEncoder):
             antialias=False,
         ):
         super().__init__()
-        self.model, _ = clip.load(name=model, device=device, jit=jit)
+        print('clip model name', model)
+        self.model, _ = clip.load(name=model, device=device, jit=jit, download_root='./')
         # We don't use the text part so delete it
         del self.model.transformer
         self.antialias = antialias
