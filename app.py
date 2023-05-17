@@ -478,8 +478,9 @@ def run_demo(
         device_idx=_GPU_INDEX,
         ckpt='105000.ckpt',
         config='configs/sd-objaverse-finetune-c_concat-256.yaml'):
-    print(os.listdir('/home/xlab-app-center/ '))
+    # print(os.listdir('/home/xlab-app-center/ '))
     print(os.listdir('/home/xlab-app-center/.cache/torch/hub/checkpoints/'))
+    print('ckpt exist before download?', os.path.isfile('/home/xlab-app-center/105000.ckpt'))
     os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
     print('ckpt exist?', os.path.isfile('./105000.ckpt'))
 
