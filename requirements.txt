@@ -1,5 +1,5 @@
 --extra-index-url https://download.pytorch.org/whl/cu113
-openxlab
+openxlab==0.0.4
 gdown==4.7.1
 torch==1.12.1
 torchvision==0.13.1
