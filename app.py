@@ -481,17 +481,10 @@ def run_demo(
     # print(os.listdir('/home/xlab-app-center/ '))
     print(os.listdir('/home/xlab-app-center/.cache/torch/hub/checkpoints/'))
     print('ckpt exist before download?', os.path.isfile('/home/xlab-app-center/105000.ckpt'))
-    print('ping https://cv.cs.columbia.edu/')
-    os.system('ping https://cv.cs.columbia.edu/')
+
     if not os.path.isfile('/home/xlab-app-center/105000.ckpt'):
         os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
         print('ckpt exist?', os.path.isfile('./105000.ckpt'))
-
-    print('ping https://www.google.com/')
-    os.system('ping https://www.google.com/')
-    # print(os.listdir('/home/xlab-app-center/.cache/torch/hub/checkpoints/'))
-    print('ping https://openaipublic.azureedge.net/')
-    os.system('ping https://openaipublic.azureedge.net/')
     
     print('clip ckpt exist before download?', os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'))
     if not os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'):
