@@ -34,7 +34,7 @@ from torchvision import transforms
 from urllib.request import urlopen
 from io import BytesIO
 import gdown
-from openxlab.model.handler import download
+from openxlab.model import download
 
 _SHOW_DESC = True
 _SHOW_INTERMEDIATE = False
@@ -487,13 +487,13 @@ def run_demo(
         os.system('wget -cP /home/xlab-app-center/ https://cv.cs.columbia.edu/zero123/assets/105000.ckpt')
         print('ckpt exist?', os.path.isfile('./105000.ckpt'))
     
-    print('clip ckpt exist before download?', os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'))
-    if not os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'):
-        download("xj/segment_anything", "ViT-B-32")
+    print('clip ckpt exist before download?', os.path.isfile('/home/xlab-app-center/ViT-B-32.pt'))
+    if not os.path.isfile('/home/xlab-app-center/ViT-B-32.pt'):
+        download("xj/segment_anything", file="ViT-B-32")
         # url = 'https://drive.google.com/uc?id=18sT7bjV2GmmV7R5uNUiGEWOokZh-jT7J'
         # output = './VIT-L-14.pt'
         # gdown.download(url, output, quiet=False)
-        print('clip ckpt exist?', os.path.isfile('./ViT-L-32.pt'))
+        print('clip ckpt exist?', os.path.isfile('./ViT-B-32.pt'))
 
 
     print('sys.argv:', sys.argv)
