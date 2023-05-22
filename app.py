@@ -488,12 +488,12 @@ def run_demo(
         print('ckpt exist?', os.path.isfile('./105000.ckpt'))
     
     print('clip ckpt exist before download?', os.path.isfile('/home/xlab-app-center/ViT-B-32.pt'))
-    if not os.path.isfile('/home/xlab-app-center/ViT-B-32.pt'):
-        download("xj/segment_anything", file="ViT-B-32")
+    if not os.path.isfile('/home/xlab-app-center/ViT-L-14.pt'):
+        download("seanywang/vit14", file="ViT-L-14")
         # url = 'https://drive.google.com/uc?id=18sT7bjV2GmmV7R5uNUiGEWOokZh-jT7J'
         # output = './VIT-L-14.pt'
         # gdown.download(url, output, quiet=False)
-        print('clip ckpt exist?', os.path.isfile('./ViT-B-32.pt'))
+        print('clip ckpt exist?', os.path.isfile('./ViT-L-14.pt'))
 
 
     print('sys.argv:', sys.argv)
