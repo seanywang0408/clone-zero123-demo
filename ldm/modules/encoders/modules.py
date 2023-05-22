@@ -347,7 +347,7 @@ class FrozenCLIPImageEmbedder(AbstractEncoder):
         """
     def __init__(
             self,
-            model='ViT-L/32',
+            model='ViT-L/14',
             jit=False,
             device='cpu',
             antialias=False,
