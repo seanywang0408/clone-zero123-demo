@@ -611,18 +611,18 @@ def run_demo(
 
         cam_vis = CameraVisualizer(vis_output)
 
-        gr.Examples(
-            examples=examples_full,  # NOTE: elements must match inputs list!
-            fn=partial(main_run, models, device, cam_vis, 'gen'),
-            inputs=[polar_slider, azimuth_slider, radius_slider,
-                    image_block, preprocess_chk,
-                    scale_slider, samples_slider, steps_slider],
-            outputs=[desc_output, vis_output, preproc_output, gen_output],
-            cache_examples=True,
-            run_on_click=True,
-        )
+        # gr.Examples(
+        #     examples=examples_full,  # NOTE: elements must match inputs list!
+        #     fn=partial(main_run, models, device, cam_vis, 'gen'),
+        #     inputs=[polar_slider, azimuth_slider, radius_slider,
+        #             image_block, preprocess_chk,
+        #             scale_slider, samples_slider, steps_slider],
+        #     outputs=[desc_output, vis_output, preproc_output, gen_output],
+        #     cache_examples=True,
+        #     run_on_click=True,
+        # )
 
-        gr.Markdown(article)
+        # gr.Markdown(article)
 
         # NOTE: I am forced to update vis_output for these preset buttons,
         # because otherwise the gradio plot always resets the plotly 3D viewpoint for some reason,
