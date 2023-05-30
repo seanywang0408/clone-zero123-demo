@@ -623,7 +623,7 @@ def run_demo(
         #     run_on_click=True,
         # )
 
-        # gr.Markdown(article)
+        gr.Markdown(article)
 
         # NOTE: I am forced to update vis_output for these preset buttons,
         # because otherwise the gradio plot always resets the plotly 3D viewpoint for some reason,

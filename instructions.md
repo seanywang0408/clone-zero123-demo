@@ -1,3 +1,9 @@
+## Tips
+1. 这个demo通过diffusion model生成输入物体的任意角度图片。由于是概率模型，每次输入会给出四个不同的结果。
+2. 可以通过选项指定角度，也可以随机角度
+2. 人体，特别是人脸可能效果会比较差
+
+<!-- 
 ## Tips if you are not getting expected results:
 
 1. If you are getting an error, try an image with a smaller resolution.
@@ -10,4 +16,4 @@
 
 Have fun! :smiley:
 
-A model card can be found here: [uses.md](https://github.com/cvlab-columbia/zero123/blob/main/zero123/uses.md)
+A model card can be found here: [uses.md](https://github.com/cvlab-columbia/zero123/blob/main/zero123/uses.md) -->
