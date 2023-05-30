@@ -495,6 +495,7 @@ def run_demo(
         # gdown.download(url, output, quiet=False)
         print('clip ckpt exist?', os.path.isfile('./ViT-L-14.pt'))
 
+    download("seanywang/vit14", file="clip_pretrained", path="./pretrained_clip/")
 
     print('sys.argv:', sys.argv)
     if len(sys.argv) > 1:
@@ -513,10 +514,10 @@ def run_demo(
     models['carvekit'] = create_carvekit_interface()
     print('Instantiating StableDiffusionSafetyChecker...')
     models['nsfw'] = StableDiffusionSafetyChecker.from_pretrained(
-        'CompVis/stable-diffusion-safety-checker').to(device)
+        './pretrained_clip', local_files_only=True).to(device)
     print('Instantiating AutoFeatureExtractor...')
     models['clip_fe'] = AutoFeatureExtractor.from_pretrained(
-        'CompVis/stable-diffusion-safety-checker')
+        './pretrained_clip', local_files_only=True)
 
     # Reduce NSFW false positives.
     # NOTE: At the time of writing, and for diffusers 0.12.1, the default parameters are:
