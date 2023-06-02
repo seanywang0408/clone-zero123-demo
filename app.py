@@ -503,7 +503,7 @@ def run_demo(
         # gdown.download(url, output, quiet=False)
         print('clip ckpt exist?', os.path.isfile('./ViT-L-14.pt'))
 
-    download("seanywang/vit14", file="clip_pretrained", path="./pretrained_clip/")
+    download("seanywang/vit14", model_name="clip_pretrained", output="./pretrained_clip/")
 
     print('sys.argv:', sys.argv)
     if len(sys.argv) > 1:
