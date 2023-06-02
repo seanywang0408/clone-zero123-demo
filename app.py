@@ -570,7 +570,7 @@ def run_demo(
                 # info='If enabled, the uploaded image will be preprocessed to remove the background and recenter the object by cropping and/or padding as necessary. '
                 # 'If disabled, the image will be used as-is, *BUT* a fully transparent or white background is required.'),
 
-                gr.Markdown('*Try camera position presets:*')
+                gr.Markdown('*指定视角:*')
                 with gr.Row():
                     left_btn = gr.Button('左边视角', variant='primary')
                     above_btn = gr.Button('上方视角', variant='primary')
@@ -610,7 +610,7 @@ def run_demo(
             with gr.Column(scale=1.1, variant='panel'):
 
                 vis_output = gr.Plot(
-                    label='输入图片视角（绿色）与输出图片视角（蓝色）的关系')
+                    label='输入视角（绿色）与输出视角（蓝色）的关系')
 
                 gen_output = gr.Gallery(label='输出视角图片')
                 gen_output.style(grid=2)
