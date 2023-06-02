@@ -564,59 +564,59 @@ def run_demo(
             with gr.Column(scale=0.9, variant='panel'):
 
                 image_block = gr.Image(type='pil', image_mode='RGBA',
-                                       label='输入物体图片')
+                                       label='Input image of single object')
                 preprocess_chk = gr.Checkbox(
-                    True, label='去除物体背景')
+                    True, label='Preprocess image automatically (remove background and recenter object)')
                 # info='If enabled, the uploaded image will be preprocessed to remove the background and recenter the object by cropping and/or padding as necessary. '
                 # 'If disabled, the image will be used as-is, *BUT* a fully transparent or white background is required.'),
 
                 gr.Markdown('*Try camera position presets:*')
                 with gr.Row():
-                    left_btn = gr.Button('左边视角', variant='primary')
-                    above_btn = gr.Button('上方视角', variant='primary')
-                    right_btn = gr.Button('右边视角', variant='primary')
+                    left_btn = gr.Button('View from the Left', variant='primary')
+                    above_btn = gr.Button('View from Above', variant='primary')
+                    right_btn = gr.Button('View from the Right', variant='primary')
                 with gr.Row():
-                    random_btn = gr.Button('随机视角', variant='primary')
-                    below_btn = gr.Button('下方视角', variant='primary')
-                    behind_btn = gr.Button('后方视角', variant='primary')
+                    random_btn = gr.Button('Random Rotation', variant='primary')
+                    below_btn = gr.Button('View from Below', variant='primary')
+                    behind_btn = gr.Button('View from Behind', variant='primary')
 
-                gr.Markdown('*手动控制视角:*')
+                gr.Markdown('*Control camera position manually:*')
                 polar_slider = gr.Slider(
-                    -90, 90, value=0, step=5, label='极角 (垂直旋转角度)')
+                    -90, 90, value=0, step=5, label='Polar angle (vertical rotation in degrees)')
                 # info='Positive values move the camera down, while negative values move the camera up.')
                 azimuth_slider = gr.Slider(
-                    -180, 180, value=0, step=5, label='方位角 (水平旋转角度)')
+                    -180, 180, value=0, step=5, label='Azimuth angle (horizontal rotation in degrees)')
                 # info='Positive values move the camera right, while negative values move the camera left.')
                 radius_slider = gr.Slider(
-                    -0.5, 0.5, value=0.0, step=0.1, label='缩放系数 (距离中心点距离)')
+                    -0.5, 0.5, value=0.0, step=0.1, label='Zoom (relative distance from center)')
                 # info='Positive values move the camera further away, while negative values move the camera closer.')
 
                 samples_slider = gr.Slider(1, 8, value=4, step=1,
-                                           label='输出结果数目')
+                                           label='Number of samples to generate')
 
                 with gr.Accordion('Advanced options', open=False):
                     scale_slider = gr.Slider(0, 30, value=3, step=1,
-                                             label='扩散系数')
+                                             label='Diffusion guidance scale')
                     steps_slider = gr.Slider(5, 200, value=75, step=5,
-                                             label='扩散步数')
+                                             label='Number of diffusion inference steps')
 
                 with gr.Row():
-                    vis_btn = gr.Button('可视化角度', variant='secondary')
-                    run_btn = gr.Button('运行', variant='primary')
+                    vis_btn = gr.Button('Visualize Angles', variant='secondary')
+                    run_btn = gr.Button('Run Generation', variant='primary')
 
                 desc_output = gr.Markdown(
-                    '结果会显示在右方', visible=_SHOW_DESC)
+                    'The results will appear on the right.', visible=_SHOW_DESC)
 
             with gr.Column(scale=1.1, variant='panel'):
 
                 vis_output = gr.Plot(
-                    label='输入图片视角（绿色）与输出图片视角（蓝色）的关系')
+                    label='Relationship between input (green) and output (blue) camera poses')
 
-                gen_output = gr.Gallery(label='输出视角图片')
+                gen_output = gr.Gallery(label='Generated images from specified new viewpoint')
                 gen_output.style(grid=2)
 
                 preproc_output = gr.Image(type='pil', image_mode='RGB',
-                                          label='预处理输入图片', visible=_SHOW_INTERMEDIATE)
+                                          label='Preprocessed input image', visible=_SHOW_INTERMEDIATE)
 
         cam_vis = CameraVisualizer(vis_output)
 
