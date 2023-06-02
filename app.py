@@ -48,8 +48,14 @@ _TITLE = 'Zero-1-to-3: Zero-shot One Image to 3D Object'
 # This demo allows you to generate novel viewpoints of an object depicted in an input image using a fine-tuned version of Stable Diffusion.
 _DESCRIPTION = '''
 This live demo allows you to control camera rotation and thereby generate novel viewpoints of an object within a single image.
-It is based on Stable Diffusion. Check out our [project webpage](https://zero123.cs.columbia.edu/) and [paper](https://arxiv.org/pdf/2303.11328.pdf) if you want to learn more about the method!
+It is based on Stable Diffusion. Check out the [project webpage](https://zero123.cs.columbia.edu/) and [paper](https://arxiv.org/pdf/2303.11328.pdf) if you want to learn more about the method!
 Note that this model is not intended for images of humans or faces, and is unlikely to work well for them.
+
+## Tips
+1. 这个demo通过diffusion model生成输入物体的任意角度图片。由于是概率模型，每次输入会给出四个不同的结果。
+2. 可以通过选项指定角度，也可以随机角度。
+2. 人体，特别是人脸可能效果会比较差。
+
 '''
 
 _ARTICLE = 'See uses.md'
@@ -623,7 +629,7 @@ def run_demo(
         #     run_on_click=True,
         # )
 
-        gr.Markdown(article)
+        # gr.Markdown(article)
 
         # NOTE: I am forced to update vis_output for these preset buttons,
         # because otherwise the gradio plot always resets the plotly 3D viewpoint for some reason,
